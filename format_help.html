@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style></style>
+  </head>
+  <body>
+  <pre class="brush:php">$phpExcel = $this-&gt;getPHPExcel();
+$sheet = $phpExcel-&gt;getActiveSheet();
+
+$sheet-&gt;getStyle('A1:C1')-&gt;applyFromArray(array(
+    // Alignment
+    'alignment' =&gt; array(
+        'horizontal' =&gt; PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+        'vertical' =&gt; PHPExcel_Style_Alignment::VERTICAL_CENTER,
+        'rotation' =&gt; 0,
+        'wrap' =&gt; true
+    ),
+
+    // Font
+    'font' =&gt; array(
+        'name' =&gt; 'Arial',
+        'bold' =&gt; true,
+        'italic' =&gt; false,
+        'underline' =&gt; PHPExcel_Style_Font::UNDERLINE_DOUBLE,
+        'strike' =&gt; false,
+        'size' =&gt; 12
+        'color' =&gt; array(
+            'rgb' =&gt; 'FF0000'
+        ),
+    ),
+
+    // Borders
+    'borders' =&gt; array(
+        'bottom' =&gt; array(
+            'style' =&gt; PHPExcel_Style_Border::BORDER_DASHDOT,
+            'color' =&gt; array(
+                'rgb' =&gt; '808080'
+            )
+        ),
+        'top' =&gt; array(
+            'style' =&gt; PHPExcel_Style_Border::BORDER_DASHDOT,
+            'color' =&gt; array(
+                'rgb' =&gt; '808080'
+            )
+        ),
+        'allborders' =&gt; array(
+            'style' =&gt; PHPExcel_Style_Border::BORDER_DASHDOT,
+            'color' =&gt; array(
+                'rgb' =&gt; '808080'
+            )
+        )
+    ),
+
+    // Border
+    'allborders'/'bottom'/'diagonal'/'horizontal'/'inside'/'left'/'outline'/'right'/'top'/'vertical' =&gt; array(
+        'style' =&gt; PHPExcel_Style_Border::BORDER_DASHDOT,
+        'color' =&gt; array(
+            'rgb' =&gt; '808080'
+        )
+    ),
+    
+    // NumberFormat
+    'numberformat' =&gt; array(
+        'code' =&gt; PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE,
+    ),
+
+    // Protection
+    'protection' =&gt; array(
+        'locked' =&gt; true,
+        'hidden' =&gt; false
+    ),
+
+    // FILL
+    'fill' =&gt; array(
+        'type' =&gt; PHPExcel_Style_Fill::FILL_GRADIENT_LINEAR,
+        'rotation'   =&gt; 0,
+        'startcolor' =&gt; array(
+            'rgb' =&gt; '000000'
+        ),
+        'endcolor' =&gt; array(
+            'argb' =&gt; 'FFFFFFFF'
+        )
+    )
+));</pre>
+  </body>
+</html>

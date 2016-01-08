@@ -1,0 +1,9 @@
+name = Views PHPExcel
+description = Allows to export views data to excel file
+core = 7.x
+package = Views
+
+files[] = plugins/views/views_phpexcel_handler_area.inc
+
+# Added automatically by builddrupalmodule script
+version = 1.0

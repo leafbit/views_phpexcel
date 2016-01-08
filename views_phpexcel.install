@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Invoke hook_requirements().
+ */
+function views_phpexcel_requirements($phase) {
+  $requirements = array();
+  if ($phase == 'runtime') {
+    // Ensure translations do not break at install time
+    $t = get_t();
+    $requirements['PHPExcel']['title'] = $t('Superfish library');
+    if (module_exists('libraries') && function_exists('libraries_get_libraries')) {
+      $library = libraries_get_libraries();
+      $PHPExcel_installed = (isset($library['PHPExcel'])) ? TRUE : FALSE;
+    }
+    elseif (file_exists('sites/all/libraries/PHPExcel/Classes/PHPExcel.php')) {
+      $PHPExcel_installed = TRUE;
+    }
+    else {
+      $PHPExcel_installed = FALSE;
+    }
+    if ($PHPExcel_installed) {
+      $requirements['PHPExcel']['value'] = $t('Installed');
+      $requirements['PHPExcel']['severity'] = REQUIREMENT_OK;
+    }
+    else {
+      $requirements['PHPExcel']['value'] = $t('Not installed');
+      $requirements['PHPExcel']['severity'] = REQUIREMENT_ERROR;
+      $requirements['PHPExcel']['description'] = $t('Please download the PHPExcel library from !link.', array('!link' => l('https://github.com/PHPOffice/PHPExcel', 'https://github.com/PHPOffice/PHPExcel')));
+    }
+
+  }
+  return $requirements;
+}
